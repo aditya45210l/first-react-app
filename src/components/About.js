@@ -2,27 +2,7 @@ import React,{useState} from "react";
 
 
 export default function About() {
-    const [myStyle, setMyStyle] = useState({
-      color :"black",
-      backgroundColor : "white",
-      btnText : 'Enable Dark Mode'
-    });
-    const switchStyle = () => {
-      if(myStyle.color === "black"){
-        setMyStyle({
-          color :'white',
-          backgroundColor : 'black',
-          btnText : 'Enable Light Mode'
-        })
-      }else{
-        setMyStyle({
-          color :'black',
-          backgroundColor : 'white',
-          btnText : 'Enable Dark Mode'
-        })
-      }
-    }
-
+  let myStyle = {color:'black'};
   return (
     <div className="container my-3" style={myStyle}>
         <h1>About</h1>
@@ -120,9 +100,6 @@ export default function About() {
             </div>
           </div>
         </div>
-      </div>
-      <div className="constainer">
-        <button type="button" className="btn btn-primary my-3" onClick={switchStyle}>{myStyle.btnText}</button>
       </div>
     </div>
   );

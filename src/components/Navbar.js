@@ -1,13 +1,19 @@
-import React from "react";
+import React,{useState} from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar(props) {
+  const [selectedOption, setSelectedOption] = useState("Light");
+  const handleSelectOption = (event) =>{
+    setSelectedOption(event.target.value);
+    props.changeMode(event.target.value);
+  }
   return (
     <nav className={`navbar navbar-expand-lg bg-${props.mode} navbar-${props.mode}`}>
-      <div className={`container-fluid text-${props.mode === 'light'? 'dark':'light'}`}>
-        <a className="navbar-brand" href="/">
+      <div className={`container-fluid text-${props.mode === 'light' ? 'dark' : 'light'}`}>
+        <Link className="navbar-brand" to="/">
           {props.titel}
-        </a>
-        
+        </Link>
+
         <button
           className="navbar-toggler"
           type="button"
@@ -22,42 +28,21 @@ export default function Navbar(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/">
+              <Link className="nav-link active" aria-current="page" to="/">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/">
+              <Link className="nav-link" to="/about" >
                 about
-              </a>
+              </Link>
             </li>
           </ul>
-          {/* <form className="d-flex" role="search">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form> */}
-          <div className={`form-check form-switch `}>
-            <input
-              className="form-check-input"
-              type="checkbox"
-              onClick={props.toggelMode}
-              role="switch"
-              id="flexSwitchCheckDefault"
-            />
-            <label
-              className="form-check-label "
-              htmlFor="flexSwitchCheckDefault"
-            >
-              {props.mode === 'light' ? 'DarkMode Off':'DarkMode On'}
-            </label>
-          </div>
+          <select value={selectedOption} className="btn btn-secondary dropdown-toggle" aria-label="Small select example" onChange={handleSelectOption} >
+            <option value="light">Light</option>
+            <option value="dark">Dark</option> 
+            <option value="blue">Blue</option>
+          </select>
         </div>
       </div>
     </nav>
