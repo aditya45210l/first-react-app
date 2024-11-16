@@ -83,19 +83,19 @@ export default function Textform(props) {
             onChange={handleOnChange}
           ></textarea>
         </div>
-        <button className={`btn btn-${props.mode === 'dark' ? 'secondary' : 'primary'} mx-1 my-1`} onClick={hendleUpClick}>
+        <button disabled={text.length === 0} className={`btn btn-${props.mode === 'dark' ? 'secondary' : 'primary'} mx-1 my-1`} onClick={hendleUpClick}>
           Convert Uppercase
         </button>
-        <button className={`btn btn-${props.mode === 'dark' ? 'secondary' : 'primary'} mx-1 my-1`} onClick={hendleLoClick}>
+        <button disabled={text.length === 0} className={`btn btn-${props.mode === 'dark' ? 'secondary' : 'primary'} mx-1 my-1`} onClick={hendleLoClick}>
           Convert Lowercase
         </button>
-        <button className={`btn btn-${props.mode === 'dark' ? 'secondary' : 'primary'} mx-1 my-1`} onClick={hendleFirstLetterClick}>
+        <button disabled={text.length === 0} className={`btn btn-${props.mode === 'dark' ? 'secondary' : 'primary'} mx-1 my-1`} onClick={hendleFirstLetterClick}>
           Capitalize First Letter
         </button>
-        <button className={`btn btn-${props.mode === 'dark' ? 'secondary' : 'primary'} mx-1 my-1`} onClick={hendleSpacesClick}>
+        <button disabled={text.length === 0} className={`btn btn-${props.mode === 'dark' ? 'secondary' : 'primary'} mx-1 my-1`} onClick={hendleSpacesClick}>
           Remove Extra space
         </button>
-        <button className="btn btn-danger mx-1" onClick={hendleClearClick}>
+        <button disabled={text.length === 0} className="btn btn-danger mx-1" onClick={hendleClearClick}>
           Clear
         </button>
       </div>
