@@ -43,17 +43,39 @@ export default function Textform(props) {
     }
     return text.trim().split(/\s+/).length;
   };
+  function selectColor(type){
+    console.log("i am enter in selectColor!")
+    console.log(props.mode,' :its me mode!')
+    if(type === 'backgroundColor') {
+      if(props.mode === 'dark'||props.mode === 'light'){
+        return props.mode === 'dark' ? 'grey' : 'white';
+  
+      }
+      else if(props.mode === 'blue'){
+        console.log("i am enter in blue color!")
+        return '#063f6c';
+      }
+    }
+    else if(type === 'color'){
+      if(props.mode === 'dark'||props.mode === 'light'){
+        return props.mode === 'dark' ? 'white' : 'black';
+      }
+      if(props.mode === 'blue'){
+        return 'white';
+      }
+    }
+  }
 
   return (
     <>
-      <div className="container" style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>
+      <div className="container" style={{ color: selectColor("color") }}>
         <h1>{props.heading}</h1>
         <div className="mb-3">
           <textarea
             className="form-control"
             style={{
-              backgroundColor: props.mode === 'dark' ? 'grey' : 'white',
-              color: props.mode === 'dark' ? 'white' : 'black'
+              backgroundColor: selectColor("backgroundColor"),
+              color: selectColor("color"),
             }}
             id="myBox"
             rows="8"
@@ -77,7 +99,7 @@ export default function Textform(props) {
           Clear
         </button>
       </div>
-      <div className="container" style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>
+      <div className="container" style={{ color: selectColor("color") }}>
         <h2>Text Summary</h2>
         <p>{countWords()} words and {text.length} characters</p>
       </div>

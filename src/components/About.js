@@ -1,11 +1,27 @@
-import React,{useState} from "react";
+import React,{} from "react";
 
 
-export default function About() {
-  let myStyle = {color:'black'};
+export default function About(props) {
+  let myStyle;
+  if(props.mode === "dark"){
+    myStyle = {color: props.mode === "light" ? "dark":"white",
+      backgroundColor: props.mode === "dark" ? "grey":"white",               
+    };
+  }
+  else if(props.mode === "blue"){
+    myStyle = {color: "white",
+      backgroundColor:"#063f6c",
+    }
+  }
+    else if(props.mode === "light"){
+      myStyle = {color: "black",
+      backgroundColor:"white",
+    }
+  }
+  console.log(myStyle.color);
   return (
-    <div className="container my-3" style={myStyle}>
-        <h1>About</h1>
+    <div className="container my-3" >
+        <h1 style={{color:myStyle.color}}>About</h1>
       <div className="accordion" id="accordionExample">
         <div className="accordion-item">
           <h2 className="accordion-header">
